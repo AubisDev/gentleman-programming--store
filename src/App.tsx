@@ -1,24 +1,17 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAllProducts } from './redux/state/products';
-import useFetchAndLoad from './hooks/useFetchAndLoad.hook';
-import { getProductsAdapter } from './adapters';
-import { getProducts } from './services/product.service';
-import { AppStore } from './redux/store';
-import { FilterSelector } from './components';
-import Cart from './components/Cart';
-import ProductList from './components/ProductList.component';
+import { FilterSelector, Cart, ProductList, Navbar } from './components';
+import { getProductsFB } from './firebase/actions.firebase';
+import { Typography } from '@mui/material';
 
-function App() {
-
-  
+function App() {  
   const dispatch = useDispatch();
-  const { loading, callEndpoint } = useFetchAndLoad();
- 
+
   useEffect(() => {
     const getItems = async () => {
-      const productList = await callEndpoint(getProducts());
-      dispatch( getAllProducts(getProductsAdapter(productList)) )
+      const productList = await getProductsFB();
+      dispatch( getAllProducts(productList) )
     }
 
     return () => {
@@ -26,15 +19,17 @@ function App() {
     }
   }, [])
 
-
-
   return (
-    <div className="App">
-      <Cart/>
+    <div style={{ position:"relative", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+      <Navbar />
       <br/>
       <br/>
-      <FilterSelector/>
+      <div style={{ display:"flex", flexDirection:"row", justifyContent:"center", marginTop:50}}>
+        <FilterSelector/>
+        <Cart/>
+      </div>
       <ProductList/>
+      <Typography id="author" position='absolute' p={2} bottom={0} width={{xs:'60%', md:'30%'}} textAlign='center' fontSize="16px" fontWeight={700} fontFamily='"Orbitron", sans-serif' sx={{ background:"rgba(255,255,255,.75)"}}> Created by Aubis Sanchez </Typography>
     </div>
   )
 }

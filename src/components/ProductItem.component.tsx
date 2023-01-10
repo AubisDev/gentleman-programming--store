@@ -1,25 +1,31 @@
 import { Card, CardMedia, CardContent, Typography, CardActions, Button, Grid } from "@mui/material"
-import { Cart, Product } from "../models"
+import { Product } from "../models"
 import { useDispatch, useSelector } from 'react-redux';
-import { addCartItem } from "../redux/state/shoppingCart";
+import { addCartItem, updateCartitem } from "../redux/state/shoppingCart";
 import { AppStore } from "../redux/store";
-import { addItemToCart, checkItemExistency, updateCartItemAmount } from "../utilities/cart.utilities";
+import { checkItemExistency, createNewCartItem, updateItemAmount } from "../utilities";
 
-export const ProductItem = (product: Cart) => {
+export const ProductItem = (product: Product) => {
   const {image, price, title, id} = product;
   const dispatch = useDispatch();
   const cartState = useSelector( (store: AppStore) => store.cart);
 
   const handleClick = () => {
     let isItemInCart = checkItemExistency(cartState, id);
-    //dispatch( addCartItem())
-    if( isItemInCart) updateCartItemAmount(cartState, id) 
-    dispatch( addCartItem(addItemToCart(cartState, product)))
+    if( isItemInCart) {
+      const updatedItem = updateItemAmount(cartState, id);
+      dispatch( updateCartitem(updatedItem));
+    }
+    else {
+      const newCartItem = createNewCartItem(cartState, product);
+      dispatch( addCartItem(newCartItem));
+    }
+    
   }
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} >
-      <Card sx={{ maxWidth: 300,  height:375, p:1, display:'flex', flexDirection:'column', justifyContent:"space-evenly" }} >
+      <Card className="productShadow" sx={{ maxWidth: 300,  height:345, p:1, display:'flex', flexDirection:'column', justifyContent:"space-between" }} >
         <CardMedia
           component="img"
           sx={{ height: '50%', objectFit:'contain' }}
@@ -27,15 +33,15 @@ export const ProductItem = (product: Cart) => {
           title={title}
         />
         <CardContent sx={{height:"30%", dispay:"flex", alignItems:"center", justifyContent:"center"}}>
-          <Typography gutterBottom variant="subtitle1" component="div">
+          <Typography gutterBottom variant="subtitle1" component="div" fontFamily="PT sans" lineHeight='1.15em'>
               {title}
           </Typography>
-          <Typography gutterBottom variant="subtitle1" component="div" >
+          <Typography gutterBottom variant="subtitle1" component="div" fontWeight={700} fontFamily="PT sans" fontStyle="italic" >
             ${price} 
           </Typography>
         </CardContent>
         <CardActions>
-        <Button variant="contained" color="secondary" fullWidth size="small" onClick={handleClick}>Add to cart</Button>
+        <Button className="addBtn" variant="contained" color="secondary" fullWidth size="small" onClick={handleClick} sx={{background:"#ec178c"}}>Add to cart</Button>
         </CardActions>
       </Card>
     </Grid>

@@ -1,1 +1,0 @@
-export type Order = 'none' | 'price-up' | 'price-down';

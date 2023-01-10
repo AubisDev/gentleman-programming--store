@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProductBy } from "../redux/state/products";
 import { AppStore } from "../redux/store";
-import { OrderProductsBy } from "../utilities/order-products-by.utility";
+import { OrderProductsBy } from "../utilities";
 
 export const FilterSelector = () => {
     const dispatch = useDispatch();
     const productsState = useSelector( (store: AppStore) => store.products);
-    const [filterBy, setFilterBy] = useState('none');
+    const [filterBy, setFilterBy] = useState('');
   
     const handleChange = (event: SelectChangeEvent) => {
      
@@ -18,20 +18,20 @@ export const FilterSelector = () => {
     };
   
     return (
-      <FormControl fullWidth>
-        <InputLabel id="filter-selector">Filter by</InputLabel>
+      <FormControl sx={{mx:3}}>
+        <InputLabel id="filter-selector" sx={{ color:'black', fontSize:"18px"}}>Filter by</InputLabel>
         <Select
           labelId="filter-selector"
           id="filter-selector"
           value={filterBy}
           label="filter-selector"
           onChange={handleChange}
+          sx={{background:"white",width:"200px", }}
         >
-          <MenuItem value='none'>None</MenuItem>
           <MenuItem value='price-up'>Price up</MenuItem>
           <MenuItem value='price-down'>Price down</MenuItem>
         </Select>
-    </FormControl>
+      </FormControl>
     )
   }
   

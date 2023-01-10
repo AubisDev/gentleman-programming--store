@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { Cart } from '../models';
-import { Product } from '../models/products';
+import { Product } from '../models/products.model';
 import { shoppingCart, products } from './state';
 
 export interface AppStore {
