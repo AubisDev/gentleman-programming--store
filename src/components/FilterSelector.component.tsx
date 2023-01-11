@@ -22,7 +22,7 @@ export const FilterSelector = () => {
         <InputLabel id="filter-selector" sx={{ color:'black', fontSize:"18px"}}>Filter by</InputLabel>
         <Select
           labelId="filter-selector"
-          id="filter-selector"
+          id="filter"
           value={filterBy}
           label="filter-selector"
           onChange={handleChange}
