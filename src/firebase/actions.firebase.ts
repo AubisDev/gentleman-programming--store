@@ -4,9 +4,13 @@ import { getProductsAdapter } from "../adapters";
 
 
 export const getProductsFB = async() => {
-    let productsArr:any[] = [];
-    const querySnapshot = await getDocs(collection(db, "products"));
-    querySnapshot.forEach( doc => productsArr.push(doc.data()));
-    return getProductsAdapter(productsArr);
+    try {
+        let productsArr:any[] = [];
+        const querySnapshot = await getDocs(collection(db, "products"));
+        querySnapshot.forEach( doc => productsArr.push(doc.data()));
+        return getProductsAdapter(productsArr);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
