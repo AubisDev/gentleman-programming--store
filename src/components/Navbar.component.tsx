@@ -1,5 +1,5 @@
 import { Box, AppBar, Toolbar, Typography, Button } from "@mui/material"
-import logo from '../assets/gp-logo.png';
+import logo from '../assets/gp-logo.webp';
 
 export const Navbar = () => {
 
