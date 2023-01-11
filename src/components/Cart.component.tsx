@@ -32,7 +32,7 @@ const Cart = () => {
         >
           <Title> CART </Title>
           { cartState.length !== 0 ? cartState.map( item => (
-              <List key={uuidv4()}> 
+              <List key={uuidv4()} > 
                 <CartItem  {...item}/>
               </List> 
           )):

@@ -12,7 +12,7 @@ export const Navbar = () => {
 
     return (
         <Box sx={{ width:'90vw'}}>
-            <AppBar position="fixed" color="inherit"  sx={{backgroundColor:'rgba(255,255,255,.8)', height:"12vh",pt:1}}>
+            <AppBar position="fixed" color="inherit"  sx={{backgroundColor:'rgba(255,255,255,.8)', height:"15vh",pt:1, display:"flex", justifyContent:'center'}}>
             <Toolbar sx={{positon:"relative"}}>
                 <Typography variant="h2" component="div" fontFamily='Orbitron' flexDirection='row' display="flex" position='relative' onClick={Top} sx={{ flexGrow: 1 }}>GP 
                     <img src={logo} alt="gp-logo" style={{ width:"100px", height:"80px", position:"absolute",bottom:25 }}/>
@@ -20,7 +20,7 @@ export const Navbar = () => {
                         Store
                     </Typography>
                 </Typography>
-                <Button color="inherit" onClick={handleClick}>About us</Button>
+                <Button color="inherit" onClick={handleClick} sx={{mt:3}}>About us</Button>
             </Toolbar>
             </AppBar>
         </Box>

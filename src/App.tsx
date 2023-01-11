@@ -24,7 +24,7 @@ function App() {
       <Navbar />
       <br/>
       <br/>
-      <div style={{ display:"flex", flexDirection:"row", justifyContent:"center", marginTop:50}}>
+      <div style={{ display:"flex", flexDirection:"row", justifyContent:"center", marginTop:100}}>
         <FilterSelector/>
         <Cart/>
       </div>

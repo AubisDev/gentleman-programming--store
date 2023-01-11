@@ -24,7 +24,7 @@ export const ProductItem = (product: Product) => {
   }
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3} >
+    <Grid item xs={12} sm={6} md={4} lg={3} display='grid' justifyContent={{xs:'center', md:'normal'}}>
       <Card className="productShadow" sx={{ maxWidth: 300,  height:345, p:1, display:'flex', flexDirection:'column', justifyContent:"space-between" }} >
         <CardMedia
           component="img"

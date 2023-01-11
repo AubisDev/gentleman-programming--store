@@ -31,7 +31,7 @@ const CartItem = (item: Cart) => {
     return (
         <Box
         
-        sx={{ width:{xs: 300, md:350, lg:450}, border:'1px solid lightgray' }}
+        sx={{ width:{xs: 300, md:350, lg:450}, border:'1px solid lightgray', }}
         
         >
             <ListItem key={title+id} sx={{ width:"90%", margin:"auto"}} >

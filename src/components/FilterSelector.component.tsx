@@ -18,7 +18,7 @@ export const FilterSelector = () => {
     };
   
     return (
-      <FormControl sx={{mx:3}}>
+      <FormControl sx={{mr:1}}>
         <InputLabel id="filter-selector" sx={{ color:'black', fontSize:"18px"}}>Filter by</InputLabel>
         <Select
           labelId="filter-selector"
@@ -26,7 +26,7 @@ export const FilterSelector = () => {
           value={filterBy}
           label="filter-selector"
           onChange={handleChange}
-          sx={{background:"white",width:"200px", }}
+          sx={{background:"white",width:"160px", }}
         >
           <MenuItem value='price-up'>Price up</MenuItem>
           <MenuItem value='price-down'>Price down</MenuItem>
